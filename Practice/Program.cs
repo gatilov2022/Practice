@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 
@@ -18,7 +19,9 @@ namespace Practice
                 ReverseLine(inputString.Substring(0, halfLengthLine)) + ReverseLine(inputString.Substring(halfLengthLine))
                 : ReverseLine(inputString) + inputString;
 
+
             Console.WriteLine("Результат: {0}", result);
+            CountingRepeatedCharacters(result, inputString);
         }
 
         //Реверс строки inputString
@@ -46,6 +49,21 @@ namespace Practice
                 return false;
             }
             return true;
+        }
+
+        //Задание 3
+        static void CountingRepeatedCharacters(String resualt, String inputString)
+        {
+            HashSet<char> outLine = new HashSet<char>(inputString.ToCharArray());
+
+            Console.WriteLine("\nСимвол (кол-во)");
+            foreach (char symbolOutLine in outLine)
+            {
+                int countSymbol = 0;
+                foreach (char symbolResualt in resualt) if (symbolResualt == symbolOutLine) countSymbol++;
+
+                Console.WriteLine("{0} ({1})", symbolOutLine, countSymbol);
+            }
         }
     }
 }
