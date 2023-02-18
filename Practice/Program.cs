@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Practice
 {
@@ -9,6 +10,8 @@ namespace Practice
         {
             Console.Write("Введите строку: ");
             String inputString = Console.ReadLine();
+
+            if (!CheckInputString(inputString)) return;
 
             int halfLengthLine = inputString.Length / 2;
             String result = inputString.Length % 2 == 0 ?
@@ -24,6 +27,25 @@ namespace Practice
             var arrayLine = inputString.ToArray();
             Array.Reverse(arrayLine);
             return new String(arrayLine);
+        }
+
+        //Задание 2
+        static bool CheckInputString(String inputString)
+        {
+            String result = "";
+            if (!Regex.IsMatch(inputString, @"^[a-z]*$"))
+            {
+                Console.WriteLine("Были введены не подходящие символы. Не подходящих символы: ");
+                foreach (var symbol in inputString)
+                {
+                    if (!Regex.IsMatch(symbol.ToString(), @"^[a-z]*$"))
+                        result += symbol;
+                }
+
+                Console.WriteLine(result);
+                return false;
+            }
+            return true;
         }
     }
 }
