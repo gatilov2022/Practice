@@ -22,6 +22,7 @@ namespace Practice
 
             Console.WriteLine("Результат: {0}", result);
             CountingRepeatedCharacters(result, inputString);
+            Console.WriteLine("Длинная подстрока с началом и концом из символов <aeiouy>: {0}", SubstringWithVowels(result));
         }
 
         //Реверс строки inputString
@@ -45,7 +46,7 @@ namespace Practice
                         result += symbol;
                 }
 
-                Console.WriteLine(result);
+                Console.WriteLine(result.Distinct().ToArray());
                 return false;
             }
             return true;
@@ -64,6 +65,23 @@ namespace Practice
 
                 Console.WriteLine("{0} ({1})", symbolOutLine, countSymbol);
             }
+        }
+
+        //Задание 4
+        static String SubstringWithVowels(String inputString)
+        {
+            char[] arrayString = inputString.ToCharArray();
+            String vowels = "aeiouy";
+            Predicate<char> predicate = e => vowels.Contains(e);
+            int beginning = Array.FindIndex(arrayString, predicate),
+                last = Array.FindLastIndex(arrayString, predicate);
+
+            String resualt = "";
+
+            if (beginning != -1) for (int i = beginning; i <= last; resualt += inputString[i], i++) ;
+            else resualt = "Такой нету";
+
+            return resualt;
         }
     }
 }
