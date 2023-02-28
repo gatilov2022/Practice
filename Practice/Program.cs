@@ -23,6 +23,7 @@ namespace Practice
             Console.WriteLine("Результат: {0}", result);
             CountingRepeatedCharacters(result, inputString);
             Console.WriteLine("Длинная подстрока с началом и концом из символов <aeiouy>: {0}", SubstringWithVowels(result));
+
         }
 
         //Реверс строки inputString
