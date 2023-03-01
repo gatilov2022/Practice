@@ -23,7 +23,9 @@ namespace Practice
             Console.WriteLine("Результат: {0}", result);
             CountingRepeatedCharacters(result, inputString);
             Console.WriteLine("Длинная подстрока с началом и концом из символов <aeiouy>: {0}", SubstringWithVowels(result));
-
+            Console.WriteLine("Выберите метод сортировки Q/T (QuickSort / TreeSort):");
+            SortingSelection(Console.ReadLine().ToString().ToUpper(), result);
+            
         }
 
         //Реверс строки inputString
@@ -83,6 +85,23 @@ namespace Practice
             else resualt = "Такой нету";
 
             return resualt;
+        }
+
+        //Задание 5
+        static void SortingSelection(string choice, string result)
+        {
+            switch (choice)
+            {
+                case "Q":
+                    Console.WriteLine("Реузльтат QuickSort: {0}", FastSort.QuickSort(result.ToCharArray()));
+                    break;
+                case "T":
+                    Console.WriteLine("Реузльтат TreeSort: {0}", TreeNode.TreeSort(result.ToCharArray()));
+                    break;
+                default:
+                    Console.WriteLine("Вы не выбрали сортировку");
+                    break;
+            }
         }
     }
 }
