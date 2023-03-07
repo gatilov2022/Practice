@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text.RegularExpressions;
 
 namespace Practice
@@ -25,7 +26,11 @@ namespace Practice
             Console.WriteLine("Длинная подстрока с началом и концом из символов <aeiouy>: {0}", SubstringWithVowels(result));
             Console.WriteLine("Выберите метод сортировки Q/T (QuickSort / TreeSort):");
             SortingSelection(Console.ReadLine().ToString().ToUpper(), result);
-            
+            var indexDelet = IndexDeleted(result);
+            Console.WriteLine("Урезанная строка: {1}, удалён символ - {0} с индекса {2}", 
+                result[indexDelet],
+                result.Remove(indexDelet, 1),
+                indexDelet);
         }
 
         //Реверс строки inputString
@@ -102,6 +107,22 @@ namespace Practice
                     Console.WriteLine("Вы не выбрали сортировку");
                     break;
             }
+        }
+        //Задание 6
+        static int IndexDeleted(string str_res)
+        {
+            int idnexDel;
+            string str = "http://www.randomnumberapi.com/api/v1.0/random?max=" + (str_res.Length - 1) + "&count=1";
+            try
+            {
+                var result = new HttpClient().GetAsync(new Uri(str)).Result.Content.ReadAsStringAsync().Result;
+                idnexDel = Convert.ToInt32(result[1].ToString());
+            }
+            catch (Exception ex)
+            {
+                idnexDel = new Random().Next(str_res.Length);
+            }
+            return idnexDel;
         }
     }
 }
