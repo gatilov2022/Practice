@@ -26,7 +26,6 @@ namespace Practice
             Console.WriteLine("Длинная подстрока с началом и концом из символов <aeiouy>: {0}", SubstringWithVowels(result));
             Console.WriteLine("Выберите метод сортировки Q/T (QuickSort / TreeSort):");
             SortingSelection(Console.ReadLine().ToString().ToUpper(), result);
-
             var indexDelet = IndexDeleted(result);
             Console.WriteLine("Урезанная строка: {1}, удалён символ - {0} с индекса {2}", 
                 result[indexDelet],
