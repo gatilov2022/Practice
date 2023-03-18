@@ -15,7 +15,7 @@ public class TreeNode
     public static string TreeSort(char[] array)
     {
         var treeNode = new TreeNode(array[0]);
-        for (int i = 1; i < array.Length; i++)
+        for (var i = 1; i < array.Length; i++)
         {
             treeNode.Insert(new TreeNode(array[i]));
         }

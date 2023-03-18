@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Text;
+using System.Text.RegularExpressions;
 using Practice.Core;
 
 namespace Practice.ConsoleApp;
@@ -7,6 +8,7 @@ internal class Program
 {
     static void Main(string[] args)
     {
+        Console.OutputEncoding = Encoding.UTF8;
         Console.Write("Введите строку: ");
         var inputString = Console.ReadLine();
 
